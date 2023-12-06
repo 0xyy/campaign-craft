@@ -1,0 +1,46 @@
+@if (loadCompleted) {
+<div class="details">
+  <div class="title-box">
+    <h1>
+      {{ campaign.title }}
+    </h1>
+    <app-campaign-status [status]="campaign.status" />
+  </div>
+  <div class="price-box">
+    <div>
+      <p class="subtitle">Bid amount</p>
+      <h3>{{ campaign.bidAmount | formatMoney }}</h3>
+    </div>
+    <div>
+      <p class="subtitle">Campaign fund</p>
+      <h3>{{ campaign.fund | formatMoney }}</h3>
+    </div>
+  </div>
+  <div class="city-box">
+    <div>
+      <p class="subtitle">Location</p>
+      <h3>{{ campaign.town }}</h3>
+    </div>
+    <div>
+      <p class="subtitle">Radius</p>
+      <h3>{{ campaign.radius }} kilometers</h3>
+    </div>
+  </div>
+  <div>
+    <p class="subtitle">Keywords</p>
+    <div class="keywords-box">
+      @for (keyword of campaign.keywords; track $index) {
+      <span class="keyword">{{ keyword }}</span>
+      } @empty {
+      <p>No keywords</p>
+      }
+    </div>
+  </div>
+  <div class="actions">
+    <button class="button delete" (click)="onDelete()">Delete</button>
+    <a class="button edit" [routerLink]="['/campaigns/edit', campaign.id]"
+      >Edit</a
+    >
+  </div>
+</div>
+}

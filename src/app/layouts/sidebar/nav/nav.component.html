@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    @for (item of navItems; track $index) {
+    <li>
+      <a [routerLink]="item.to" routerLinkActive="active"> {{ item.text }}</a>
+    </li>
+    }
+  </ul>
+</nav>

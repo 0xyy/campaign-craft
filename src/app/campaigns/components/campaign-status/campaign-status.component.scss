@@ -1,0 +1,22 @@
+@use "../../../../styles.scss" as vars;
+
+.status {
+  font-family: Sono, sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.2rem 1rem;
+  border-radius: 5px;
+  color: var(--color-brand-50);
+
+  @include vars.medium {
+    font-size: 1.3rem;
+  }
+}
+
+.off-status {
+  background: var(--color-red-700);
+}
+
+.on-status {
+  background: var(--color-green-700);
+}

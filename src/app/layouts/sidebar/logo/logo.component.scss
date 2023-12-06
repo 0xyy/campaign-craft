@@ -1,0 +1,22 @@
+@use "../../../../styles.scss" as vars;
+
+.logo {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-family: Sono, sans-serif;
+    font-size: 3.3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  @include vars.medium {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}

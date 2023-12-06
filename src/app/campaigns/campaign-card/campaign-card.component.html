@@ -1,0 +1,14 @@
+<a [routerLink]="['/campaigns', id]">
+  <div class="card">
+    <div class="title-box">
+      <h3 class="title">{{ title }}</h3>
+      <app-campaign-status [status]="status" />
+    </div>
+    <div class="info-box">
+      <p class="town">{{ town }}</p>
+      <h4 class="bid-amount">
+        {{ bidAmount | formatMoney }}
+      </h4>
+    </div>
+  </div>
+</a>

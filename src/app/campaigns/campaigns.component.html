@@ -1,0 +1,16 @@
+<section>
+  <a class="create-campaign" routerLink="/campaigns/create">Create campaign</a>
+  <div class="campaigns-container">
+    @for (campaign of campaigns; track campaign.id) {
+    <app-campaign-card
+      [id]="campaign.id"
+      [title]="campaign.title"
+      [status]="campaign.status"
+      [bidAmount]="campaign.bidAmount"
+      [town]="campaign.town"
+    />
+    } @empty {
+    <p class="no-campaigns">No campagins available</p>
+    }
+  </div>
+</section>

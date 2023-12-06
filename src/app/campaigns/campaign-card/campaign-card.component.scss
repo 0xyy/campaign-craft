@@ -1,0 +1,71 @@
+@use "../../../styles.scss" as vars;
+
+.card {
+  padding: 1.4rem 1.8rem;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  cursor: pointer;
+  transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(1.06);
+  }
+
+  .title-box {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+  }
+
+  .info-box {
+    justify-content: space-between;
+    display: flex;
+    align-items: flex-end;
+
+    .town {
+      font-size: 1.5rem;
+      color: var(--color-grey-500);
+      font-style: italic;
+    }
+
+    .bid-amount {
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+  }
+
+  @include vars.large {
+    .title-box {
+      flex-direction: column;
+    }
+  }
+
+  @include vars.medium {
+    .title-box {
+      flex-direction: row;
+      .title {
+        font-size: 2.4rem;
+      }
+    }
+
+    .info-box .bid-amount {
+      font-size: 2rem;
+    }
+  }
+
+  @include vars.small {
+    .title-box {
+      flex-direction: column;
+    }
+  }
+}

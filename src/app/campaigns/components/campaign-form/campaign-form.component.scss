@@ -1,0 +1,114 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .input-box {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+
+    label {
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    input {
+      border: 2px solid var(--color-indigo-700);
+      border-radius: 8px;
+      padding: 0.7rem 1.3rem;
+
+      &.off-status[type="radio"] {
+        accent-color: var(--color-red-700);
+      }
+
+      &.on-status[type="radio"] {
+        accent-color: var(--color-green-700);
+      }
+
+      &::placeholder {
+        color: var(--color-grey-400);
+      }
+    }
+
+    input[readonly] {
+      outline: none;
+      pointer-events: all !important;
+      cursor: not-allowed;
+      opacity: 0.4;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+
+    .error {
+      color: var(--color-red-700);
+      font-weight: 500;
+    }
+
+    .status-box {
+      font-weight: 600;
+      text-transform: uppercase;
+      display: flex;
+      gap: 0.8rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .keywords-box {
+    gap: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    button {
+      border: none;
+      text-transform: uppercase;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      font-weight: 600;
+      background: var(--color-brand-600);
+
+      &:hover {
+        background: var(--color-indigo-700);
+      }
+    }
+
+    .clear {
+      background: var(--color-red-700);
+
+      &:hover {
+        background: var(--color-red-800);
+      }
+    }
+
+    .input-keyword {
+      border: 2px solid var(--color-indigo-700);
+      border-radius: 8px;
+      padding: 0.5rem 1.3rem;
+    }
+  }
+
+  .submit-button {
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.8rem;
+    border: none;
+    background: var(--color-brand-600);
+
+    &:hover {
+      background: var(--color-indigo-700);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+}

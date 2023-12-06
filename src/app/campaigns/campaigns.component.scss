@@ -1,0 +1,33 @@
+section {
+  display: flex;
+  gap: 4rem;
+  flex-direction: column;
+
+  .create-campaign {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.8rem;
+    background: var(--color-brand-600);
+    border: none;
+
+    &:hover {
+      background: var(--color-indigo-700);
+    }
+  }
+
+  .campaigns-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+
+    .no-campaigns {
+      text-align: center;
+      font-weight: 500;
+      font-size: 2rem;
+    }
+  }
+}

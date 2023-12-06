@@ -1,0 +1,40 @@
+<section>
+  <div class="card">
+    <h3>Account Balance</h3>
+    <h1>{{ balanceAmount | formatMoney }}</h1>
+  </div>
+
+  <div class="card">
+    <h3>Deposit</h3>
+    <form [formGroup]="balanceForm" (ngSubmit)="onSubmit()" class="form">
+      <input type="number" formControlName="amount" />
+      <button [disabled]="!balanceForm.valid">Deposit</button>
+    </form>
+    @if (!balanceForm.get("amount")?.valid &&
+    balanceForm.get("amount")?.touched) {
+    <div class="error">Bid amount is required and should greater than 0</div>
+    }
+  </div>
+
+  <div class="card">
+    <h3>Last 10 Transactions History</h3>
+    <div class="transactions-history">
+      @for (transaction of transactionsHistory; track transaction.id) {
+      <div class="transaction">
+        <span class="title">
+          {{ transaction.title }}
+        </span>
+        <span
+          class="amount"
+          [ngClass]="{
+            'positve': transaction.amount > 0 ,
+            'negative': transaction.amount < 0,
+          }"
+        >
+          {{ transaction.amount | formatMoney }}
+        </span>
+      </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,128 @@
+<section>
+  <form [formGroup]="campaignForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="input-box">
+      <label for="title">Campaign Name</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        placeholder="Enter campaign name"
+      />
+      @if (!campaignForm.get("title")?.valid &&
+      campaignForm.get("title")?.touched) {
+      <span class="error"
+        >Campaign name is required and should be not longer than 30
+        characters</span
+      >
+      }
+    </div>
+    <div class="input-box">
+      <label for="bid-amount">Bid Amount</label>
+      <input
+        id="bid-amount"
+        type="number"
+        formControlName="bidAmount"
+        placeholder="Enter bid amount"
+      />
+      @if (!campaignForm.get("bidAmount")?.valid &&
+      campaignForm.get("bidAmount")?.touched) {
+      <span class="error"
+        >Bid amount is required and should greater than 0</span
+      >
+      }
+    </div>
+    <div class="input-box">
+      <label for="fund">Fund</label>
+      <input
+        id="fund"
+        type="number"
+        formControlName="fund"
+        placeholder="Enter campaign fund"
+        [readOnly]="isEditing"
+      />
+      @if (!campaignForm.get("fund")?.valid &&
+      campaignForm.get("fund")?.touched) {
+      <span class="error">Fund is required and should greater than 0</span>
+      }
+    </div>
+    <div class="input-box">
+      <label for="status">Status</label>
+      @for (status of statuses; track status) {
+      <div class="status-box">
+        <input
+          id="status"
+          type="radio"
+          [value]="status"
+          formControlName="status"
+          [ngClass]="{
+            'on-status': status === 'on',
+            'off-status': status === 'off'
+          }"
+        />{{ status }}
+      </div>
+      }
+    </div>
+    <div class="input-box">
+      <label for="radius">Radius</label>
+      <input
+        id="radius"
+        type="number"
+        formControlName="radius"
+        placeholder="Enter campaign radius in kilometers"
+      />
+      @if (!campaignForm.get("radius")?.valid &&
+      campaignForm.get("radius")?.touched) {
+      <span class="error">Radius is required and should greater than 0</span>
+      }
+    </div>
+
+    <div class="input-box">
+      <label for="town">city</label>
+      <input
+        id="town"
+        type="text"
+        formControlName="town"
+        list="towns-list"
+        placeholder="Enter city name"
+      />
+      @if (!campaignForm.get("town")?.valid &&
+      campaignForm.get("town")?.touched) {
+      <span class="error">City is required</span>
+      }
+      <datalist id="towns-list">
+        @for (town of towns; track $index) {
+        <option [value]="town"></option>
+        }
+      </datalist>
+    </div>
+
+    <div class="input-box" formArrayName="keywords">
+      <label for="keywords">Keywords</label>
+      <div class="keywords-box">
+        <button type="button" (click)="onAddKeyword()">Add</button>
+        @if (keywordsControls.length) {
+        <button type="button" (click)="onClearKeywords()" class="clear">
+          Clear
+        </button>
+        } @for (keywordControl of keywordsControls; track $index) {
+        <input
+          id="keywords"
+          list="keywords-list"
+          type="text"
+          [formControlName]="$index"
+          class="input-keyword"
+        />
+        }
+        <datalist id="keywords-list">
+          @for (keyword of keywordsValues; track $index) {
+          <option [value]="keyword"></option>
+          }
+        </datalist>
+      </div>
+    </div>
+
+    <button class="submit-button" [disabled]="!campaignForm.valid">
+      Submit
+    </button>
+  </form>
+</section>
