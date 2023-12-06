@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: ['https://sparkling-cascaron-d83dda.netlify.app'],
+  apiUrl: ['https://tiny-ruby-walkingstick-tam.cyclic.app/'],
 };
