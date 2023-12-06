@@ -1,6 +1,6 @@
 {
   "balance": {
-    "amount": 94724
+    "amount": 100000
   },
   "history": [
     {
@@ -17,21 +17,6 @@
       "amount": -5000,
       "title": "Winter Party",
       "id": 3
-    },
-    {
-      "amount": 100,
-      "title": "deposit",
-      "id": 4
-    },
-    {
-      "amount": 100,
-      "title": "deposit",
-      "id": 5
-    },
-    {
-      "amount": -1000,
-      "title": "Piwniczanka",
-      "id": 6
     }
   ],
   "campaigns": [
@@ -42,22 +27,8 @@
       "status": "on",
       "town": "Kraków",
       "radius": 20,
-      "keywords": [
-        "Winter",
-        "Car",
-        "Elegant Frozen Chair"
-      ],
+      "keywords": ["Winter", "Car", "Elegant Frozen Chair"],
       "id": 1
-    },
-    {
-      "title": "Piwniczanka",
-      "bidAmount": 150,
-      "fund": 1000,
-      "status": "on",
-      "town": "Barwice",
-      "radius": 23,
-      "keywords": [],
-      "id": 2
     }
   ]
 }
