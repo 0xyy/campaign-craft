@@ -10,13 +10,19 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { LoadingComponent } from '../layouts/loading/loading.component';
 
 @Component({
   selector: 'app-balance',
   standalone: true,
-  imports: [FormatMoneyPipe, ReactiveFormsModule, CommonModule],
   templateUrl: './balance.component.html',
   styleUrl: './balance.component.scss',
+  imports: [
+    FormatMoneyPipe,
+    ReactiveFormsModule,
+    CommonModule,
+    LoadingComponent,
+  ],
 })
 export class BalanceComponent implements OnInit, OnDestroy {
   balanceService = inject(BalanceService);
@@ -27,21 +33,36 @@ export class BalanceComponent implements OnInit, OnDestroy {
   balanceAmount: number = 0;
   balanceForm: FormGroup;
   transactionsHistory: TransactionsHistory[];
+  isBalanceLoading: boolean;
+  isTransactionsLoading: boolean;
 
   ngOnInit() {
+    this.isTransactionsLoading = true;
+    this.isBalanceLoading = true;
     this.getBalanceSubscription = this.balanceService
       .getCurrentBalance()
       .subscribe({
-        next: (balance) => (this.balanceAmount = balance.amount),
-        error: (e) => this.toast.error(e.statusText),
+        next: (balance) => {
+          this.balanceAmount = balance.amount;
+          this.isBalanceLoading = false;
+        },
+        error: (e) => {
+          this.toast.error(e.statusText);
+          this.isBalanceLoading = false;
+        },
       });
 
     this.getTransactionsHistorySubscription = this.balanceService
       .getTransactionsHistory()
       .subscribe({
-        next: (transactionsHistory) =>
-          (this.transactionsHistory = transactionsHistory.slice(-10).reverse()),
-        error: (e) => this.toast.error(e.statusText),
+        next: (transactionsHistory) => {
+          this.transactionsHistory = transactionsHistory.slice(-10).reverse();
+          this.isTransactionsLoading = false;
+        },
+        error: (e) => {
+          this.toast.error(e.statusText);
+          this.isTransactionsLoading = false;
+        },
       });
 
     this.balanceForm = new FormGroup({

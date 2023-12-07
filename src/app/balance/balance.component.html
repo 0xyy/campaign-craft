@@ -1,7 +1,11 @@
 <section>
   <div class="card">
     <h3>Account Balance</h3>
+    @if (isBalanceLoading) {
+    <app-loading />
+    } @if (!isBalanceLoading) {
     <h1>{{ balanceAmount | formatMoney }}</h1>
+    }
   </div>
 
   <div class="card">
@@ -18,6 +22,9 @@
 
   <div class="card">
     <h3>Last 10 Transactions History</h3>
+    @if (isBalanceLoading) {
+    <app-loading />
+    } @if (!isBalanceLoading && transactionsHistory.length) {
     <div class="transactions-history">
       @for (transaction of transactionsHistory; track transaction.id) {
       <div class="transaction">
@@ -27,14 +34,15 @@
         <span
           class="amount"
           [ngClass]="{
-            'positve': transaction.amount > 0 ,
-            'negative': transaction.amount < 0,
-          }"
+              'positve': transaction.amount > 0 ,
+              'negative': transaction.amount < 0,
+            }"
         >
           {{ transaction.amount | formatMoney }}
         </span>
       </div>
       }
     </div>
+    }
   </div>
 </section>

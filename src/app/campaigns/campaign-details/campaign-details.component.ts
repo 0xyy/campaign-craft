@@ -37,12 +37,13 @@ export class CampaignDetailsComponent implements OnInit, OnDestroy {
         .subscribe({
           next: (campaign) => {
             this.campaign = campaign;
+            this.loadCompleted = true;
           },
           error: (e) => {
             this.router.navigate(['/campaigns']);
             this.toast.error('Campaign not found', e.statusText);
+            this.loadCompleted = true;
           },
-          complete: () => (this.loadCompleted = true),
         });
     }
   }
