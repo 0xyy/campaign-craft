@@ -26,6 +26,7 @@ https://main--campaign-craft.netlify.app/campaigns
 - Edit existing campaign
 - Delete campaign
 - Deposit your funds
+- See transactions history
 
 
 ## Run Locally
