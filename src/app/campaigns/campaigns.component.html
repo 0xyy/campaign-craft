@@ -1,7 +1,10 @@
 <section>
   <a class="create-campaign" routerLink="/campaigns/create">Create campaign</a>
   <div class="campaigns-container">
-    @for (campaign of campaigns; track campaign.id) {
+    @if (isLoading) {
+    <app-loading />
+    } @if (!isLoading && campaigns.length) { @for (campaign of campaigns; track
+    campaign.id) {
     <app-campaign-card
       [id]="campaign.id"
       [title]="campaign.title"
@@ -11,6 +14,6 @@
     />
     } @empty {
     <p class="no-campaigns">No campagins available</p>
-    }
+    } }
   </div>
 </section>
