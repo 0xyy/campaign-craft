@@ -1,4 +1,6 @@
-@if (loadCompleted) {
+@if (!loadCompleted) {
+<app-loading />
+} @if (loadCompleted) {
 <div class="details">
   <div class="title-box">
     <h1>

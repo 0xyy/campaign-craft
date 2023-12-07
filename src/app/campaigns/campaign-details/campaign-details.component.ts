@@ -5,13 +5,19 @@ import { CampaignService } from '../../api/campaign/campaign.service';
 import { CampaignStatusComponent } from '../components/campaign-status/campaign-status.component';
 import { FormatMoneyPipe } from '../../utils/pipes/format-money';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingComponent } from '../../layouts/loading/loading.component';
 
 @Component({
   selector: 'app-campaign-details',
   standalone: true,
-  imports: [CampaignStatusComponent, FormatMoneyPipe, RouterLink],
   templateUrl: './campaign-details.component.html',
   styleUrl: './campaign-details.component.scss',
+  imports: [
+    CampaignStatusComponent,
+    FormatMoneyPipe,
+    RouterLink,
+    LoadingComponent,
+  ],
 })
 export class CampaignDetailsComponent implements OnInit, OnDestroy {
   route = inject(ActivatedRoute);
@@ -29,7 +35,9 @@ export class CampaignDetailsComponent implements OnInit, OnDestroy {
       this.getCampaignSubscription = this.campaignService
         .getCampaignById(id)
         .subscribe({
-          next: (campaign) => (this.campaign = campaign),
+          next: (campaign) => {
+            this.campaign = campaign;
+          },
           error: (e) => {
             this.router.navigate(['/campaigns']);
             this.toast.error('Campaign not found', e.statusText);

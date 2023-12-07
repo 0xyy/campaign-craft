@@ -24,7 +24,7 @@ export class BalanceComponent implements OnInit, OnDestroy {
   getBalanceSubscription: Subscription;
   updateBalanceSubscription: Subscription;
   getTransactionsHistorySubscription: Subscription;
-  balanceAmount: number;
+  balanceAmount: number = 0;
   balanceForm: FormGroup;
   transactionsHistory: TransactionsHistory[];
 
